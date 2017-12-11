@@ -4,19 +4,19 @@ import io.reactivex.Scheduler;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 
 /**
+ * 主线程（UI线程）
  * Created by qixuefeng on 2017/12/11.
  */
 
 public class UIThread implements PostExecutionThread {
-    private UIThread() {
 
-    }
+    private UIThread() {}
 
     public static UIThread instance(){
         return Holder.instance;
     }
 
-    public final static class Holder{
+    private final static class Holder{
         private static final UIThread instance = new UIThread();
     }
 
@@ -24,4 +24,5 @@ public class UIThread implements PostExecutionThread {
     public Scheduler getScheduler() {
         return AndroidSchedulers.mainThread();
     }
+
 }
